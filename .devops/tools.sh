@@ -4,6 +4,9 @@ set -e
 # Read the first argument into a variable
 arg1="$1"
 
+# ENVNAME=ll && ENVDIR=$ENVNAME && export PATH && mkdir $ENVDIR && tar -xzf $ENVNAME.tar.gz -C $ENVDIR && . $ENVDIR/bin/activate
+# cp ./tokenizer_checklist.chk llama.cpp/models/ && cp ./tokenizer.model llama.cpp/models/ && mkdir llama.cpp/models/llama-2-7b-chat && cp /staging/pulijala/llama-2-7b-chat.Q4_K_M.gguf llama.cpp/models/llama-2-7b-chat/
+# docker run -v "$(pwd)/llama.cpp/models:/models" test -m /models/llama-2-7b-chat/llama-2-7b-chat.Q4_K_M.gguf -p "Building a website can be done in 10 simple steps:" -n 512
 # Shift the arguments to remove the first one
 shift
 
