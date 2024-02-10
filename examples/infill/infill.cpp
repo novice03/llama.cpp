@@ -146,6 +146,13 @@ int main(int argc, char ** argv) {
 
         return 0;
     }
+    if (params.chatml) {
+        printf("\n************\n");
+        printf("%s: please use the 'main' tool for chatml mode\n", __func__);
+        printf("************\n\n");
+
+        return 0;
+    }
     if (!params.antiprompt.empty()) {
         printf("\n************\n");
         printf("%s: please use the 'main' tool for antiprompt mode\n", __func__);
@@ -230,11 +237,11 @@ int main(int argc, char ** argv) {
         LOG_TEE("\n");
         LOG_TEE("%s\n", get_system_info(params).c_str());
     }
-    const bool add_bos = llama_vocab_type(model) == LLAMA_VOCAB_TYPE_SPM;
+    const bool add_bos = llama_should_add_bos_token(model);
     LOG("add_bos: %d\n", add_bos);
 
     bool suff_rm_leading_spc = params.escape;
-    if (suff_rm_leading_spc && params.input_suffix.find_first_of(" ") == 0 && params.input_suffix.size() > 1) {
+    if (suff_rm_leading_spc && params.input_suffix.find_first_of(' ') == 0 && params.input_suffix.size() > 1) {
         params.input_suffix.erase(0, 1);
         suff_rm_leading_spc = false;
     }
